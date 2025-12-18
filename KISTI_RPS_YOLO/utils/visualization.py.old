@@ -1,0 +1,17 @@
+import cv2
+
+GREEN = (0, 255, 0)
+RED = (0, 0, 255)
+BLUE = (255, 0, 0)
+WHITE = (255, 255, 255)
+
+def draw_bbox_label(frame, box, label: str, color=GREEN, thickness=2):
+    x1, y1, x2, y2 = map(int, box)
+    cv2.rectangle(frame, (x1, y1), (x2, y2), color, thickness)
+    cv2.putText(frame, label, (x1, max(20, y1 - 10)), cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)
+
+def draw_hud(frame, you: str, cpu: str, result: str):
+    h, w = frame.shape[:2]
+    text = f"YOU: {you or '-'} | CPU: {cpu or '-'} | RESULT: {result or '-'}"
+    cv2.rectangle(frame, (0, 0), (w, 40), (0, 0, 0), -1)
+    cv2.putText(frame, text, (10, 28), cv2.FONT_HERSHEY_SIMPLEX, 0.8, WHITE, 2)
