@@ -6,4 +6,4 @@ cd "$(dirname "$0")"
 # 기존 가위바위보와 동일한 venv 사용
 #source .venv/bin/activate
 
-python run_ani.py --camera 0 --width 640 --height 480
+python run_everything.py --camera 0 --width 640 --height 480
